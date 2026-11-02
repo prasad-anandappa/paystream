@@ -1,0 +1,9 @@
+# No-Docker quickstart: run with SPRING_PROFILES_ACTIVE=h2 (or --spring.profiles.active=h2)
+# and the whole platform runs on an embedded H2 database in PostgreSQL mode,
+# built by the same Flyway migrations. Data lives only as long as the process.
+spring:
+  datasource:
+    url: jdbc:h2:mem:paystream;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver

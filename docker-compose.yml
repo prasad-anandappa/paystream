@@ -1,0 +1,22 @@
+# Local development database for PayStream.
+# These are throwaway local-dev credentials only — never used outside your machine.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: paystream-postgres
+    environment:
+      POSTGRES_DB: paystream
+      POSTGRES_USER: paystream
+      POSTGRES_PASSWORD: paystream
+    ports:
+      - "5432:5432"
+    volumes:
+      - paystream-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U paystream -d paystream"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  paystream-pgdata:

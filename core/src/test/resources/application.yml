@@ -1,0 +1,14 @@
+# Tests run on H2 in PostgreSQL-compatibility mode (Docker/Testcontainers is
+# not available in every environment this suite runs in). The exact same
+# Flyway migrations that build the PostgreSQL schema build the test schema.
+spring:
+  datasource:
+    url: jdbc:h2:mem:paystream-core;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  flyway:
+    enabled: true
